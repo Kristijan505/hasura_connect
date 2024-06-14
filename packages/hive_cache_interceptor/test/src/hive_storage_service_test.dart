@@ -40,7 +40,7 @@ void main() {
 
   test('get', () async {
     box.data['mock_key'] = {
-      'value': 'mock_value'
+      'value': 'mock_value',
     };
     final response = await storage.get('mock_key');
     expect(response, 'mock_value');
@@ -49,13 +49,13 @@ void main() {
   test('put', () async {
     await storage.put('mock_key', 'mock_value');
     expect(box.data['mock_key'], {
-      'value': 'mock_value'
+      'value': 'mock_value',
     });
   });
 
   test('remove', () async {
     box.data['mock_key'] = {
-      'value': 'mock_value'
+      'value': 'mock_value',
     };
     await storage.remove('mock_key');
     expect(box.data, {});
@@ -64,7 +64,7 @@ void main() {
   group('containsKey', () {
     test('true', () async {
       box.data['mock_key'] = {
-        'value': 'mock_value'
+        'value': 'mock_value',
       };
       final response = await storage.containsKey('mock_key');
       expect(response, true);
@@ -77,7 +77,7 @@ void main() {
 
   test('clear', () async {
     box.data['mock_key'] = {
-      'value': 'mock_value'
+      'value': 'mock_value',
     };
     await storage.clear();
     expect(box.data, {});

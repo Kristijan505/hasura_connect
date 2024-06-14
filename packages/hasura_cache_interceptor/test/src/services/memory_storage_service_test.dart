@@ -28,7 +28,7 @@ void main() {
   group('containsKey', () {
     test('true', () async {
       storage.db['mock_key'] = {
-        'value': 'mock_value'
+        'value': 'mock_value',
       };
       final response = await storage.containsKey('mock_key');
       expect(response, true);
@@ -41,7 +41,7 @@ void main() {
 
   test('clear', () async {
     storage.db['mock_key'] = {
-      'value': 'mock_value'
+      'value': 'mock_value',
     };
     await storage.clear();
     expect(storage.db, {});
