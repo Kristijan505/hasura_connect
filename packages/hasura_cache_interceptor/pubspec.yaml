@@ -8,7 +8,7 @@ homepage: https://github.com/Flutterando/hasura_connect/tree/master/packages/has
 documentation: https://github.com/Flutterando/hasura_connect/blob/master/packages/hasura_cache_interceptor/README.md
 
 environment:
-  sdk: ">=2.16.0 <4.0.0"
+  sdk: ">=3.9.0 <4.0.0"
 
 dependencies:
   # hasura_connect: ^5.0.1

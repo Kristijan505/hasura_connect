@@ -31,10 +31,7 @@ class RequestRepositoryImpl implements RequestRepository {
       return Left(e);
     } catch (e) {
       return Left(
-        DatasourceError(
-          'DatasourceError: ${e.toString()}',
-          request: request,
-        ),
+        DatasourceError('DatasourceError: ${e.toString()}', request: request),
       );
     }
   }

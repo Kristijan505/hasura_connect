@@ -13,31 +13,29 @@ class CacheInterceptor extends InterceptorBase implements Interceptor {
   ///[CacheInterceptor] constructor, receives a [IStorageService] variable.
   CacheInterceptor(this._storage);
 
-  ///The method [clearAllCache] is responsible for cleaning all in storage 
+  ///The method [clearAllCache] is responsible for cleaning all in storage
   Future<void> clearAllCache() async => _storage.clear();
 
   @override
-  Future onError(HasuraError error, HasuraConnect connect) async {
+  Future onError(HasuraError request, HasuraConnect connect) async {
     var isConnectionError = [
       'Connection Rejected',
       'Websocket Error',
-    ].contains(error.message);
+    ].contains(request.message);
 
-    isConnectionError = isConnectionError ||
-        error.message
-            .contains('No address associated with hostname, errno = 7');
+    isConnectionError =
+        isConnectionError ||
+        request.message.contains(
+          'No address associated with hostname, errno = 7',
+        );
 
-    final key = _generateKey(error.request);
+    final key = _generateKey(request);
     final containsCache = await _storage.containsKey(key);
     if (isConnectionError && containsCache) {
       final cachedData = await _storage.get(key);
-      return Response(
-        data: cachedData,
-        statusCode: 500,
-        request: error.request,
-      );
+      return Response(data: cachedData, statusCode: 500, request: request);
     }
-    return error;
+    return request;
   }
 
   @override

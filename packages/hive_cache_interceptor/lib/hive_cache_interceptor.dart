@@ -9,5 +9,5 @@ class HiveCacheInterceptor extends CacheInterceptor {
   ///[HiveCacheInterceptor] constructor, receives a [boxName] and
   ///pass it to [HiveStorageService]
   HiveCacheInterceptor([String boxName = 'storage-box'])
-      : super(HiveStorageService(boxName));
+    : super(HiveStorageService(boxName));
 }

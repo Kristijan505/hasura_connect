@@ -36,11 +36,7 @@ class Request {
 
   ///[copyWith] will copy [Request] into a new object, changing the variable
   ///values
-  Request copyWith({
-    String? url,
-    Query? query,
-    RequestType? type,
-  }) {
+  Request copyWith({String? url, Query? query, RequestType? type}) {
     return Request(
       url: url ?? this.url,
       query: query ?? this.query,

@@ -8,5 +8,5 @@ import 'package:shared_preferences_cache_interceptor/src/shared_preferences_stor
 class SharedPreferencesCacheInterceptor extends CacheInterceptor {
   ///[SharedPreferencesCacheInterceptor] constructor
   SharedPreferencesCacheInterceptor()
-      : super(SharedPreferencesStorageService());
+    : super(SharedPreferencesStorageService());
 }

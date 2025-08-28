@@ -11,11 +11,12 @@ class HiveStorageService implements IStorageService {
   final String boxName;
 
   final _box = Completer<Box>();
-///[HiveStorageService] for storage-box
+
+  ///[HiveStorageService] for storage-box
   factory HiveStorageService([String boxName = 'storage-box']) =>
       HiveStorageService._(boxName);
 
-///Tests the [HiveStorageService] object
+  ///Tests the [HiveStorageService] object
   factory HiveStorageService.test(Box box) =>
       HiveStorageService._('test-box', box);
 

@@ -5,13 +5,13 @@ import 'package:hasura_connect/hasura_connect.dart';
 ///Class [HasuraFirebasePerformanceInterceptor]
 ///implements the [onRequest] method.
 class HasuraFirebasePerformanceInterceptor extends InterceptorBase {
-  /// [HasuraFirebasePerformanceInterceptor] constructor 
+  /// [HasuraFirebasePerformanceInterceptor] constructor
   HasuraFirebasePerformanceInterceptor();
 
   final _mapMetric = <int, HttpMetric>{};
 
-///Receives a request and a [HasuraConnect] builds and starts a 
-///[HttpMetric]. it returns an [onRequest].
+  ///Receives a request and a [HasuraConnect] builds and starts a
+  ///[HttpMetric]. it returns an [onRequest].
   @override
   Future onRequest(Request request, HasuraConnect connect) async {
     try {
@@ -27,10 +27,7 @@ class HasuraFirebasePerformanceInterceptor extends InterceptorBase {
       _mapMetric[request.query.hashCode] = metric;
       await metric.start();
     } catch (e, stackTrace) {
-      debugPrintStack(
-        label: e.toString(),
-        stackTrace: stackTrace,
-      );
+      debugPrintStack(label: e.toString(), stackTrace: stackTrace);
     }
     return super.onRequest(request, connect);
   }
@@ -44,27 +41,21 @@ class HasuraFirebasePerformanceInterceptor extends InterceptorBase {
       await metric?.stop();
       _mapMetric.remove(data.request.query.hashCode);
     } catch (e, stackTrace) {
-      debugPrintStack(
-        label: e.toString(),
-        stackTrace: stackTrace,
-      );
+      debugPrintStack(label: e.toString(), stackTrace: stackTrace);
     }
     return super.onResponse(data, connect);
   }
 
   @override
-  Future onError(HasuraError error, HasuraConnect connect) async {
+  Future onError(HasuraError request, HasuraConnect connect) async {
     try {
-      final metric = _mapMetric[error.request.query.hashCode];
+      final metric = _mapMetric[request.request.query.hashCode];
       metric?.httpResponseCode = 500;
       await metric?.stop();
-      _mapMetric.remove(error.request.query.hashCode);
+      _mapMetric.remove(request.request.query.hashCode);
     } catch (e, stackTrace) {
-      debugPrintStack(
-        label: e.toString(),
-        stackTrace: stackTrace,
-      );
+      debugPrintStack(label: e.toString(), stackTrace: stackTrace);
     }
-    return super.onError(error, connect);
+    return super.onError(request, connect);
   }
 }

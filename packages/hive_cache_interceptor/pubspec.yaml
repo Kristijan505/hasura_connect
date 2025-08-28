@@ -8,12 +8,12 @@ homepage: https://github.com/Flutterando/hasura_connect/tree/master/packages/hiv
 documentation: https://github.com/Flutterando/hasura_connect/blob/master/packages/hive_cache_interceptor/README.md
 
 environment:
-  sdk: ">=2.16.0 <4.0.0"  
+  sdk: ">=3.9.0 <4.0.0"  
 
 dependencies:
   flutter:
     sdk: flutter
-  hasura_cache_interceptor: ">=1.0.0-dev.5 <2.0.0"
+  # hasura_cache_interceptor: ">=1.0.0-dev.5 <2.0.0"
   hive: ^2.2.3
   path_provider: ^2.1.3
   platform: ^3.1.5 

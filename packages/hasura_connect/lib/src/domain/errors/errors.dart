@@ -1,7 +1,10 @@
 import 'package:hasura_connect/hasura_connect.dart';
 import 'package:hasura_connect/src/domain/models/extensions.dart';
 
-final _request = Request(url: '', query: const Query(document: ''));
+final _request = Request(
+  url: '',
+  query: const Query(document: ''),
+);
 
 ///Abstract class [HasuraError] implements [Exception]
 ///interface for Hasura related errors.
@@ -42,13 +45,12 @@ class HasuraRequestError extends HasuraError {
     String message,
     Exception? _exception, {
     required Request request,
-  }) =>
-      HasuraRequestError(
-        message,
-        null,
-        exception: _exception,
-        request: request,
-      );
+  }) => HasuraRequestError(
+    message,
+    null,
+    exception: _exception,
+    request: request,
+  );
 
   ///Object [HasuraRequestError.fromJson]
   ///Receives a [json] and a required [request]
@@ -75,7 +77,7 @@ class HasuraRequestError extends HasuraError {
 class DatasourceError extends HasuraError {
   ///[DatasourceError] constructor
   DatasourceError(String message, {required Request request})
-      : super(message, request: request);
+    : super(message, request: request);
   @override
   String toString() => 'DatasourceError: $message';
 }
@@ -101,7 +103,7 @@ class ConnectionError extends HasuraError {
   ///[ConnectionError] constructor
 
   const ConnectionError(String message, {required Request request})
-      : super(message, request: request);
+    : super(message, request: request);
 
   @override
   String toString() => 'ConnectionError: $message';

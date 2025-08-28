@@ -9,20 +9,20 @@ documentation: https://github.com/Flutterando/hasura_connect/blob/master/package
 
 
 environment:
-  sdk: ">=2.16.0 <4.0.0"
+  sdk: ">=3.9.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  hasura_cache_interceptor: ">=1.0.0-dev.5 <2.0.0"
+  # hasura_cache_interceptor: ">=1.0.0-dev.5 <2.0.0"
   platform: ^3.1.5
   shared_preferences: ">=2.0.15 <3.0.0"
 
 dependency_overrides:   
   hasura_cache_interceptor: 
     path: ../hasura_cache_interceptor
-  test_api: 0.7.2
-  meta: ^1.15.0
+  # test_api: 0.7.2
+  # meta: ^1.15.0
 
 dev_dependencies:
   flutter_test:

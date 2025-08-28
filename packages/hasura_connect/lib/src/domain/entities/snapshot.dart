@@ -35,7 +35,8 @@ class Snapshot<T> extends Stream<T> implements EventSink<T> {
     _wrapper.value = defaultValue;
     _query = query;
     _controller = controller ?? StreamController.broadcast();
-    _rootStream = rootStream ??
+    _rootStream =
+        rootStream ??
         _controller.stream.transform(StartWithStreamTransformer<T>(_wrapper));
   }
 
@@ -77,8 +78,9 @@ class Snapshot<T> extends Stream<T> implements EventSink<T> {
       controller: _controller,
       closeConnection: closeConnection,
       changeVariablesF: changeVariablesF,
-      defaultValue:
-          _wrapper.value == null ? null : convert(_wrapper.value as T),
+      defaultValue: _wrapper.value == null
+          ? null
+          : convert(_wrapper.value as T),
     );
   }
 
@@ -110,7 +112,7 @@ class StartWithStreamTransformer<T> extends StreamTransformerBase<T, T> {
 
   ///[StartWithStreamTransformer] constructor
   StartWithStreamTransformer(WrapperStartWith<T> wrapper)
-      : transformer = _buildTransformer<T>(wrapper);
+    : transformer = _buildTransformer<T>(wrapper);
 
   @override
   Stream<T> bind(Stream<T> stream) => transformer.bind(stream);
